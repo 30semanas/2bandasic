@@ -3,388 +3,292 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ministério de Música</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<title>Bandas IC</title>
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+<meta http-equiv="Pragma" content="no-cache"/>
+<meta http-equiv="Expires" content="0"/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<!-- LOGIN SCREEN -->
-<div id="loginScreen" class="screen active">
-  <div class="login-bg">
-    <div class="login-orb orb1"></div>
-    <div class="login-orb orb2"></div>
-    <div class="login-orb orb3"></div>
-  </div>
-  <div class="login-container">
-    <div class="login-logo">
-      <div class="logo-icon">♪</div>
-      <h1>Ministério</h1>
-      <span>Sistema de Gestão Musical</span>
+<!-- HOME -->
+<div id="sHome" class="screen active">
+  <div class="home-bg"><div class="orb o1"></div><div class="orb o2"></div></div>
+  <div class="home-wrap">
+    <div class="home-logo">
+      <div class="logo">♪</div>
+      <h1>Bandas IC</h1>
+      <p>Ministério de Música</p>
     </div>
-    <div class="login-card">
-      <h2>Entrar</h2>
-      <div class="form-group">
-        <label>E-mail ou usuário</label>
-        <input type="text" id="loginUser" placeholder="seu@email.com" />
-      </div>
-      <div class="form-group">
-        <label>Senha</label>
-        <input type="password" id="loginPass" placeholder="••••••••" />
-      </div>
-      <button class="btn-primary full" onclick="login()">Entrar</button>
-      <div class="login-divider">ou</div>
-      <button class="btn-ghost full" onclick="showPublicInscricao()">Inscrever-se para audição →</button>
-    </div>
-  </div>
-</div>
-
-<!-- PUBLIC INSCRICAO SCREEN -->
-<div id="inscricaoScreen" class="screen">
-  <div class="public-header">
-    <div class="logo-icon small">♪</div>
-    <span>Ministério de Música</span>
-    <button class="btn-ghost sm" onclick="showLogin()">← Voltar</button>
-  </div>
-  <div class="public-container">
-    <div class="public-hero">
-      <h1>Quero fazer parte! 🎵</h1>
-      <p>Preencha os dados abaixo para solicitar sua audição</p>
-    </div>
-    <div class="form-card">
-      <div class="form-section">
-        <h3>Dados pessoais</h3>
-        <div class="form-row">
-          <div class="form-group">
-            <label>Nome completo *</label>
-            <input type="text" id="inscNome" placeholder="Seu nome completo" />
-          </div>
-          <div class="form-group">
-            <label>WhatsApp *</label>
-            <input type="text" id="inscWhats" placeholder="(11) 99999-9999" />
-          </div>
-        </div>
-        <div class="form-group">
-          <label>Foto (opcional)</label>
-          <div class="upload-area" onclick="document.getElementById('inscFoto').click()">
-            <div id="fotoPreview" class="foto-placeholder">
-              <span>📷</span>
-              <p>Clique para enviar sua foto</p>
-            </div>
-            <input type="file" id="inscFoto" accept="image/*" style="display:none" onchange="previewFoto(this)" />
-          </div>
-        </div>
-      </div>
-
-      <div class="form-section">
-        <h3>Instrumentos para audição</h3>
-        <p class="hint">Selecione todos os instrumentos que deseja auditar</p>
-        <div class="instrument-grid">
-          <label class="instrument-chip"><input type="checkbox" value="Voz" /><span>🎤 Voz</span></label>
-          <label class="instrument-chip"><input type="checkbox" value="Violão" /><span>🎸 Violão</span></label>
-          <label class="instrument-chip"><input type="checkbox" value="Guitarra" /><span>🎸 Guitarra</span></label>
-          <label class="instrument-chip"><input type="checkbox" value="Baixo" /><span>🎵 Baixo</span></label>
-          <label class="instrument-chip"><input type="checkbox" value="Teclado" /><span>🎹 Teclado</span></label>
-          <label class="instrument-chip"><input type="checkbox" value="Bateria" /><span>🥁 Bateria</span></label>
-          <label class="instrument-chip"><input type="checkbox" value="Percussão" /><span>🪘 Percussão</span></label>
-          <label class="instrument-chip"><input type="checkbox" value="Backing Vocal" /><span>🎶 Backing Vocal</span></label>
-        </div>
-      </div>
-
-      <div class="form-section">
-        <h3>Observações</h3>
-        <textarea id="inscObs" placeholder="Alguma informação adicional? Experiência musical, disponibilidade..." rows="3"></textarea>
-      </div>
-
-      <button class="btn-primary full lg" onclick="enviarInscricao()">Enviar inscrição 🚀</button>
+    <div class="home-cards">
+      <button class="hcard" onclick="showLogin('Audição','')">
+        <div class="hcard-ico" style="background:linear-gradient(135deg,#FF6B9D,#FF8E53)">🎤</div>
+        <div class="hcard-txt"><strong>Audição</strong><span>Quero me inscrever</span></div>
+        <span class="hcard-arr">→</span>
+      </button>
+      <button class="hcard" onclick="irLogin('Voluntário','voluntario')">
+        <div class="hcard-ico" style="background:linear-gradient(135deg,#4ECDC4,#44B89A)">🎵</div>
+        <div class="hcard-txt"><strong>Voluntário</strong><span>Acessar minha área</span></div>
+        <span class="hcard-arr">→</span>
+      </button>
+      <button class="hcard" onclick="irLogin('Líder de Banda','lider')">
+        <div class="hcard-ico" style="background:linear-gradient(135deg,#A78BFA,#7C3AED)">🎸</div>
+        <div class="hcard-txt"><strong>Líder de Banda</strong><span>Gerenciar minha banda</span></div>
+        <span class="hcard-arr">→</span>
+      </button>
+      <button class="hcard" onclick="irLogin('Administrador','admin')">
+        <div class="hcard-ico" style="background:linear-gradient(135deg,#F59E0B,#D97706)">⚙️</div>
+        <div class="hcard-txt"><strong>Administrador</strong><span>Painel de gestão</span></div>
+        <span class="hcard-arr">→</span>
+      </button>
     </div>
   </div>
 </div>
 
-<!-- MAIN APP -->
-<div id="appScreen" class="screen">
-  <!-- SIDEBAR -->
-  <aside class="sidebar" id="sidebar">
-    <div class="sidebar-logo">
-      <div class="logo-icon small">♪</div>
-      <span>Ministério</span>
+<!-- LOGIN -->
+<div id="sLogin" class="screen">
+  <div class="auth-wrap">
+    <button class="btn-back" onclick="show('sHome')">← Voltar</button>
+    <div class="auth-logo"><div class="logo sm">♪</div><span id="loginTitle">Acessar</span></div>
+    <div class="auth-card">
+      <div class="fg"><label>Token de acesso</label><input type="password" id="iToken" placeholder="••••••••••" autocomplete="off"/></div>
+      <button class="btn-primary w100" onclick="doLogin()">Entrar →</button>
+      <p class="auth-hint">Token enviado pelo administrador via WhatsApp</p>
     </div>
-
-    <div class="sidebar-user">
-      <div class="user-avatar" id="sidebarAvatar">A</div>
-      <div class="user-info">
-        <strong id="sidebarName">Admin</strong>
-        <span id="sidebarRole" class="role-badge">Administrador</span>
-      </div>
-    </div>
-
-    <nav class="sidebar-nav">
-      <div class="nav-section-label">Principal</div>
-      <a class="nav-item active" onclick="showPage('dashboard')" data-page="dashboard">
-        <span class="nav-icon">⊞</span> Dashboard
-      </a>
-      <a class="nav-item" onclick="showPage('audicoes')" data-page="audicoes">
-        <span class="nav-icon">🎙</span> Audições
-        <span class="badge" id="badgeAudicoes">3</span>
-      </a>
-      <a class="nav-item" onclick="showPage('musicos')" data-page="musicos">
-        <span class="nav-icon">👥</span> Músicos
-      </a>
-      <a class="nav-item" onclick="showPage('bandas')" data-page="bandas">
-        <span class="nav-icon">🎸</span> Bandas
-      </a>
-
-      <div class="nav-section-label">Organização</div>
-      <a class="nav-item" onclick="showPage('escalas')" data-page="escalas">
-        <span class="nav-icon">📅</span> Escalas
-        <span class="badge warning" id="badgeEscalas">5</span>
-      </a>
-      <a class="nav-item" onclick="showPage('ensaios')" data-page="ensaios">
-        <span class="nav-icon">🎵</span> Ensaios
-      </a>
-      <a class="nav-item" onclick="showPage('repertorios')" data-page="repertorios">
-        <span class="nav-icon">📋</span> Repertórios
-      </a>
-      <a class="nav-item" onclick="showPage('celebracoes')" data-page="celebracoes">
-        <span class="nav-icon">✨</span> Celebrações
-      </a>
-
-      <div class="nav-section-label">Biblioteca</div>
-      <a class="nav-item" onclick="showPage('musicas')" data-page="musicas">
-        <span class="nav-icon">🎼</span> Músicas
-      </a>
-      <a class="nav-item" onclick="showPage('subs')" data-page="subs">
-        <span class="nav-icon">🔄</span> Substituições
-      </a>
-    </nav>
-
-    <button class="btn-logout" onclick="logout()">Sair →</button>
-  </aside>
-
-  <!-- TOPBAR MOBILE -->
-  <div class="topbar">
-    <button class="hamburger" onclick="toggleSidebar()">☰</button>
-    <span class="topbar-title" id="topbarTitle">Dashboard</span>
-    <div class="topbar-user">
-      <div class="user-avatar sm" id="topbarAvatar">A</div>
-    </div>
-  </div>
-
-  <!-- MAIN CONTENT -->
-  <main class="main-content">
-
-    <!-- DASHBOARD -->
-    <div id="page-dashboard" class="page active">
-      <div class="page-header">
-        <h1>Dashboard</h1>
-        <span class="page-subtitle">Bem-vindo de volta! Aqui está um resumo do ministério.</span>
-      </div>
-
-      <div class="stats-grid">
-        <div class="stat-card" style="--accent: #6C63FF">
-          <div class="stat-icon">👥</div>
-          <div class="stat-info">
-            <span class="stat-label">Músicos ativos</span>
-            <strong class="stat-value">24</strong>
-          </div>
-        </div>
-        <div class="stat-card" style="--accent: #FF6B6B">
-          <div class="stat-icon">🎙</div>
-          <div class="stat-info">
-            <span class="stat-label">Audições pendentes</span>
-            <strong class="stat-value">3</strong>
-          </div>
-        </div>
-        <div class="stat-card" style="--accent: #4ECDC4">
-          <div class="stat-icon">🎸</div>
-          <div class="stat-info">
-            <span class="stat-label">Bandas ativas</span>
-            <strong class="stat-value">4</strong>
-          </div>
-        </div>
-        <div class="stat-card" style="--accent: #FFD93D">
-          <div class="stat-icon">📅</div>
-          <div class="stat-info">
-            <span class="stat-label">Escalas este mês</span>
-            <strong class="stat-value">12</strong>
-          </div>
-        </div>
-      </div>
-
-      <div class="dashboard-grid">
-        <div class="dash-section">
-          <div class="section-header">
-            <h2>Próximas escalas</h2>
-            <button class="btn-ghost sm" onclick="showPage('escalas')">Ver todas →</button>
-          </div>
-          <div class="escala-list" id="dashEscalas"></div>
-        </div>
-
-        <div class="dash-section">
-          <div class="section-header">
-            <h2>Audições aguardando</h2>
-            <button class="btn-ghost sm" onclick="showPage('audicoes')">Ver todas →</button>
-          </div>
-          <div id="dashAudicoes"></div>
-        </div>
-
-        <div class="dash-section wide">
-          <div class="section-header">
-            <h2>Próximas celebrações</h2>
-            <button class="btn-ghost sm" onclick="showPage('celebracoes')">Ver todas →</button>
-          </div>
-          <div id="dashCelebracoes"></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- AUDICOES -->
-    <div id="page-audicoes" class="page">
-      <div class="page-header">
-        <h1>Audições</h1>
-        <button class="btn-primary" onclick="showPublicInscricao()">+ Nova inscrição</button>
-      </div>
-
-      <div class="filter-bar">
-        <div class="search-box">
-          <span>🔍</span>
-          <input type="text" placeholder="Buscar por nome ou instrumento..." onkeyup="filterAudicoes(this.value)" />
-        </div>
-        <div class="filter-tabs">
-          <button class="filter-tab active" onclick="filterTabAudicao('todos', this)">Todos</button>
-          <button class="filter-tab" onclick="filterTabAudicao('pendente', this)">Pendentes</button>
-          <button class="filter-tab" onclick="filterTabAudicao('agendada', this)">Agendadas</button>
-          <button class="filter-tab" onclick="filterTabAudicao('aprovado', this)">Aprovados</button>
-          <button class="filter-tab" onclick="filterTabAudicao('reprovado', this)">Reprovados</button>
-        </div>
-      </div>
-
-      <div class="audicoes-grid" id="audicoesGrid"></div>
-    </div>
-
-    <!-- MUSICOS -->
-    <div id="page-musicos" class="page">
-      <div class="page-header">
-        <h1>Músicos</h1>
-        <button class="btn-primary" onclick="openModalMusico()">+ Adicionar músico</button>
-      </div>
-      <div class="filter-bar">
-        <div class="search-box">
-          <span>🔍</span>
-          <input type="text" placeholder="Buscar músico..." onkeyup="filterMusicos(this.value)" />
-        </div>
-        <select onchange="filterMusicoInstrumento(this.value)" class="select-filter">
-          <option value="">Todos os instrumentos</option>
-          <option>Voz</option><option>Violão</option><option>Guitarra</option>
-          <option>Baixo</option><option>Teclado</option><option>Bateria</option>
-          <option>Percussão</option><option>Backing Vocal</option>
-        </select>
-      </div>
-      <div class="musicos-grid" id="musicosGrid"></div>
-    </div>
-
-    <!-- BANDAS -->
-    <div id="page-bandas" class="page">
-      <div class="page-header">
-        <h1>Bandas</h1>
-        <button class="btn-primary" onclick="openModalBanda()">+ Nova banda</button>
-      </div>
-      <div class="bandas-grid" id="bandasGrid"></div>
-    </div>
-
-    <!-- ESCALAS -->
-    <div id="page-escalas" class="page">
-      <div class="page-header">
-        <h1>Escalas</h1>
-        <button class="btn-primary" onclick="openModalEscala()">+ Nova escala</button>
-      </div>
-      <div class="filter-bar">
-        <div class="filter-tabs">
-          <button class="filter-tab active" onclick="filterTabEscala('todas', this)">Todas</button>
-          <button class="filter-tab" onclick="filterTabEscala('pendente', this)">Pendentes</button>
-          <button class="filter-tab" onclick="filterTabEscala('aceita', this)">Aceitas</button>
-          <button class="filter-tab" onclick="filterTabEscala('recusada', this)">Recusadas</button>
-        </div>
-      </div>
-      <div class="escalas-list" id="escalasGrid"></div>
-    </div>
-
-    <!-- ENSAIOS -->
-    <div id="page-ensaios" class="page">
-      <div class="page-header">
-        <h1>Ensaios</h1>
-        <button class="btn-primary" onclick="openModalEnsaio()">+ Novo ensaio</button>
-      </div>
-      <div class="ensaios-list" id="ensaiosGrid"></div>
-    </div>
-
-    <!-- REPERTORIOS -->
-    <div id="page-repertorios" class="page">
-      <div class="page-header">
-        <h1>Repertórios</h1>
-        <button class="btn-primary" onclick="openModalRepertorio()">+ Novo repertório</button>
-      </div>
-      <div class="repertorios-grid" id="repertoriosGrid"></div>
-    </div>
-
-    <!-- CELEBRACOES -->
-    <div id="page-celebracoes" class="page">
-      <div class="page-header">
-        <h1>Celebrações</h1>
-        <button class="btn-primary" onclick="openModalCelebracao()">+ Nova celebração</button>
-      </div>
-      <div class="celebracoes-grid" id="celebracoesGrid"></div>
-    </div>
-
-    <!-- MUSICAS -->
-    <div id="page-musicas" class="page">
-      <div class="page-header">
-        <h1>Biblioteca de Músicas</h1>
-        <button class="btn-primary" onclick="openModalMusica()">+ Adicionar música</button>
-      </div>
-      <div class="filter-bar">
-        <div class="search-box">
-          <span>🔍</span>
-          <input type="text" placeholder="Buscar música ou artista..." onkeyup="filterMusicas(this.value)" />
-        </div>
-      </div>
-      <div class="musicas-grid" id="musicasGrid"></div>
-    </div>
-
-    <!-- SUBS -->
-    <div id="page-subs" class="page">
-      <div class="page-header">
-        <h1>Substituições</h1>
-      </div>
-      <div class="subs-container" id="subsGrid"></div>
-    </div>
-
-  </main>
-</div>
-
-<!-- MODALS -->
-<div id="modalOverlay" class="modal-overlay" onclick="closeModal(event)">
-  <div class="modal" id="modalBox">
-    <div class="modal-header">
-      <h2 id="modalTitle">Modal</h2>
-      <button class="modal-close" onclick="closeModalDirect()">✕</button>
-    </div>
-    <div class="modal-body" id="modalBody"></div>
   </div>
 </div>
 
-<!-- DETAIL PANEL -->
-<div id="detailPanel" class="detail-panel">
-  <div class="detail-header">
-    <button onclick="closeDetail()" class="btn-ghost sm">← Voltar</button>
-    <h2 id="detailTitle">Detalhes</h2>
+<!-- INSCRIÇÃO -->
+<div id="sInsc" class="screen">
+  <div class="pub-head">
+    <button class="btn-back" onclick="show('sHome')">← Voltar</button>
+    <span>Inscrição para Audição</span>
   </div>
-  <div id="detailContent" class="detail-content"></div>
+  <div class="pub-wrap">
+    <div class="pub-hero"><h1>Quero fazer parte! 🎵</h1><p>Preencha seus dados para solicitar uma audição</p></div>
+    <div class="fcard">
+      <div class="fsec"><h3>Dados pessoais</h3>
+        <div class="frow2">
+          <div class="fg"><label>Nome completo *</label><input type="text" id="iNome" placeholder="Seu nome"/></div>
+          <div class="fg"><label>Eklesia / Igreja *</label><input type="text" id="iEkl" placeholder="Nome da sua igreja"/></div>
+        </div>
+        <div class="fg"><label>WhatsApp *</label><input type="text" id="iWa" placeholder="(11) 99999-9999"/></div>
+        <div class="fg"><label>Foto (opcional)</label>
+          <div class="upload-zone" onclick="document.getElementById('iFoto').click()">
+            <div id="fotoPrev"><span style="font-size:32px">📷</span><p>Clique para enviar</p></div>
+            <input type="file" id="iFoto" accept="image/*" style="display:none" onchange="prevFoto(this)"/>
+          </div>
+        </div>
+      </div>
+      <div class="fsec"><h3>Instrumentos *</h3><p class="hint">Selecione todos que deseja auditar</p>
+        <div class="chip-grid">
+          <label class="chip"><input type="checkbox" value="Voz"/><span>🎤 Voz</span></label>
+          <label class="chip"><input type="checkbox" value="Violão"/><span>🎸 Violão</span></label>
+          <label class="chip"><input type="checkbox" value="Guitarra"/><span>🎸 Guitarra</span></label>
+          <label class="chip"><input type="checkbox" value="Baixo"/><span>🎵 Baixo</span></label>
+          <label class="chip"><input type="checkbox" value="Teclado"/><span>🎹 Teclado</span></label>
+          <label class="chip"><input type="checkbox" value="Bateria"/><span>🥁 Bateria</span></label>
+          <label class="chip"><input type="checkbox" value="Percussão"/><span>🪘 Percussão</span></label>
+          <label class="chip"><input type="checkbox" value="Backing Vocal"/><span>🎶 BV</span></label>
+        </div>
+      </div>
+      <div class="fsec"><h3>Observações</h3><textarea id="iObs" placeholder="Experiência, disponibilidade..." rows="3"></textarea></div>
+      <button class="btn-primary w100 lg" onclick="enviarInscricao()">Enviar inscrição 🚀</button>
+    </div>
+  </div>
 </div>
 
-<!-- TOAST -->
+<!-- VOLUNTÁRIO -->
+<div id="sVol" class="screen">
+  <div class="app-head">
+    <div class="app-logo"><span class="logo xs">♪</span> Bandas IC</div>
+    <div class="app-head-r"><span id="vNome" class="huser"></span><button class="btn-out" onclick="sair()">Sair</button></div>
+  </div>
+  <div class="app-main">
+    <div class="pg-head"><div><h1 id="vGreet">Olá!</h1><p id="vEkl" class="sub"></p></div></div>
+    <div class="tabs">
+      <button class="tab active" onclick="vtab('vEsc',this)">📅 Minhas Escalas</button>
+      <button class="tab" onclick="vtab('vBanda',this)">🎸 Minha Banda</button>
+      <button class="tab" onclick="vtab('vSubs',this)">🔄 Subs</button>
+    </div>
+    <div id="vEsc" class="tc active">
+      <div class="ftabs">
+        <button class="ftab active" onclick="fvesc('todas',this)">Todas</button>
+        <button class="ftab" onclick="fvesc('pendente',this)">Pendentes</button>
+        <button class="ftab" onclick="fvesc('aceita',this)">Aceitas</button>
+        <button class="ftab" onclick="fvesc('recusada',this)">Recusadas</button>
+      </div>
+      <div id="vEscList" class="lc"></div>
+    </div>
+    <div id="vBanda" class="tc"><div id="vBandaInfo" class="lc"></div></div>
+    <div id="vSubs" class="tc">
+      <div class="ftabs">
+        <button class="ftab active" onclick="fvsub('todas',this)">Todas</button>
+        <button class="ftab" onclick="fvsub('aberta',this)">Abertas</button>
+        <button class="ftab" onclick="fvsub('resolvida',this)">Resolvidas</button>
+      </div>
+      <div id="vSubsList" class="lc"></div>
+    </div>
+  </div>
+</div>
+
+<!-- LÍDER -->
+<div id="sLid" class="screen">
+  <div class="app-head">
+    <div class="app-logo"><span class="logo xs">♪</span> Bandas IC</div>
+    <div class="app-head-r"><span id="lNome" class="huser"></span><button class="btn-out" onclick="sair()">Sair</button></div>
+  </div>
+  <div class="app-main">
+    <div class="pg-head"><h1>Minhas Bandas</h1><p id="lEkl" class="sub"></p></div>
+    <div class="tabs">
+      <button class="tab active" onclick="ltab('lBandas',this)">🎸 Bandas</button>
+      <button class="tab" onclick="ltab('lEsc',this)">📅 Escalas</button>
+      <button class="tab" onclick="ltab('lMinhasEsc',this)">🗓 Minhas Escalas</button>
+      <button class="tab" onclick="ltab('lRep',this)">📋 Repertórios</button>
+      <button class="tab" onclick="ltab('lMus',this)">🎼 Músicas</button>
+      <button class="tab" onclick="ltab('lSubs',this)">🔄 Subs</button>
+    </div>
+    <div id="lBandas" class="tc active"><div id="lBandasList" class="lc"></div></div>
+    <div id="lEsc" class="tc">
+      <div style="margin-bottom:12px"><button class="btn-primary sm" onclick="modalCriarEscala()">+ Nova escala</button></div>
+      <div id="lEscList" class="lc"></div>
+    </div>
+    <div id="lMinhasEsc" class="tc">
+      <p style="font-size:13px;color:var(--text2);margin-bottom:14px">Suas escalas pessoais como músico voluntário.</p>
+      <div class="ftabs">
+        <button class="ftab active" onclick="fvesc('todas',this)">Todas</button>
+        <button class="ftab" onclick="fvesc('pendente',this)">Pendentes</button>
+        <button class="ftab" onclick="fvesc('aceita',this)">Aceitas</button>
+        <button class="ftab" onclick="fvesc('recusada',this)">Recusadas</button>
+      </div>
+      <div id="lMinhasEscList" class="lc"></div>
+    </div>
+    <div id="lRep" class="tc">
+      <div style="margin-bottom:12px"><button class="btn-primary sm" onclick="modalCriarRepertorio()">+ Novo repertório</button></div>
+      <div id="lRepList" class="lc"></div>
+    </div>
+    <div id="lMus" class="tc">
+      <div style="margin-bottom:12px"><button class="btn-primary sm" onclick="modalAdicionarMusica()">+ Adicionar música</button></div>
+      <div id="lMusList" class="lc"></div>
+    </div>
+    <div id="lSubs" class="tc"><div id="lSubsList" class="lc"></div></div>
+  </div>
+</div>
+
+<!-- ADMIN -->
+<div id="sAdm" class="screen">
+  <div class="adm-layout">
+    <aside class="sidebar" id="admSide">
+      <div class="sb-logo"><div class="logo sm">♪</div><span>Bandas IC</span></div>
+      <div class="sb-user"><div class="av" id="admAv">A</div><div><strong id="admNome">Admin</strong><span class="rtag">Administrador</span></div></div>
+      <nav class="sb-nav">
+        <span class="nlabel">Gestão</span>
+        <a class="ni active" onclick="apg('dashboard')" data-p="dashboard">⊞ Dashboard</a>
+        <a class="ni" onclick="apg('inscricoes')" data-p="inscricoes">🎙 Inscrições <span class="nb" id="bInsc">0</span></a>
+        <a class="ni" onclick="apg('musicos')" data-p="musicos">👥 Músicos</a>
+        <a class="ni" onclick="apg('bandas')" data-p="bandas">🎸 Bandas</a>
+        <span class="nlabel">Eventos</span>
+        <a class="ni" onclick="apg('celebracoes')" data-p="celebracoes">✨ Celebrações</a>
+        <a class="ni" onclick="apg('escalas')" data-p="escalas">📅 Escalas</a>
+        <a class="ni" onclick="apg('repertorios')" data-p="repertorios">📋 Repertórios</a>
+        <span class="nlabel">Sistema</span>
+        <a class="ni" onclick="apg('tokens')" data-p="tokens">🔑 Tokens</a>
+      </nav>
+      <button class="sb-out" onclick="sair()">Sair →</button>
+    </aside>
+    <div class="topbar">
+      <button class="burger" onclick="toggleSide()">☰</button>
+      <span id="admTopTit">Dashboard</span>
+      <div class="av sm" id="admTopAv">A</div>
+    </div>
+    <main class="adm-main">
+      <div id="ap-dashboard" class="ap active">
+        <div class="pg-head"><h1>Dashboard</h1><span id="admGreet" class="sub"></span></div>
+        <div class="stats-row" id="admStats"></div>
+        <div class="dash-grid">
+          <div class="dash-box"><div class="db-title">Últimas inscrições</div><div id="dInsc"></div></div>
+          <div class="dash-box"><div class="db-title">Próximas celebrações</div><div id="dCel"></div></div>
+        </div>
+      </div>
+      <div id="ap-inscricoes" class="ap">
+        <div class="pg-head"><h1>Inscrições</h1></div>
+        <div class="ftabs" id="inscFtabs">
+          <button class="ftab active" onclick="fInsc('todos',this)">Todos</button>
+          <button class="ftab" onclick="fInsc('pendente',this)">Pendentes</button>
+          <button class="ftab" onclick="fInsc('agendada',this)">Agendadas</button>
+          <button class="ftab" onclick="fInsc('aprovado',this)">Aprovados</button>
+          <button class="ftab" onclick="fInsc('reprovado',this)">Reprovados</button>
+        </div>
+        <div id="admInscList" class="cg"></div>
+      </div>
+      <div id="ap-musicos" class="ap">
+        <div class="pg-head"><h1>Músicos</h1></div>
+        <div id="admMusList" class="cg"></div>
+      </div>
+      <div id="ap-bandas" class="ap">
+        <div class="pg-head"><h1>Bandas</h1><button class="btn-primary sm" onclick="modalCriarBanda()">+ Nova banda</button></div>
+        <div id="admBandList" class="cg"></div>
+      </div>
+      <div id="ap-celebracoes" class="ap">
+        <div class="pg-head"><h1>Celebrações</h1><button class="btn-primary sm" onclick="modalCriarCel()">+ Nova celebração</button></div>
+        <div id="admCelList" class="cg"></div>
+      </div>
+      <div id="ap-escalas" class="ap">
+        <div class="pg-head"><h1>Escalas</h1></div>
+        <div id="admEscList" class="lc"></div>
+      </div>
+      <div id="ap-repertorios" class="ap">
+        <div class="pg-head"><h1>Repertórios</h1><button class="btn-primary sm" onclick="modalCriarRepertorioAdmin()">+ Novo repertório</button></div>
+        <div id="admRepList" class="lc" style="margin-bottom:24px"></div>
+        <div style="margin-top:24px;padding-top:20px;border-top:1px solid var(--border)">
+          <div class="pg-head" style="margin-bottom:14px">
+            <h2 style="font-family:var(--fh);font-size:18px;font-weight:700">🎼 Biblioteca de Músicas</h2>
+            <button class="btn-primary sm" onclick="modalAdicionarMusica()">+ Adicionar música</button>
+          </div>
+          <div id="admMusList2" class="cg"></div>
+        </div>
+      </div>
+      <div id="ap-tokens" class="ap">
+        <div class="pg-head"><h1>Tokens de Acesso</h1><button class="btn-primary sm" onclick="modalGerarToken()">+ Gerar token</button></div>
+        <div id="admTokList" class="lc"></div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div id="mOverlay" class="mov" onclick="closeMov(event)">
+  <div class="modal" id="mBox">
+    <div class="mhead"><h2 id="mTitle"></h2><button class="mx" onclick="closeM()">✕</button></div>
+    <div class="mbody" id="mBody"></div>
+  </div>
+</div>
+
+<!-- DETAIL -->
+<div id="detail" class="detail">
+  <div class="dhead"><button class="btn-back" onclick="closeD()">← Voltar</button><h2 id="dTitle"></h2></div>
+  <div id="dBody" class="dbody"></div>
+</div>
+
+<!-- TOAST & LOADING -->
 <div id="toast" class="toast"></div>
+<div id="loading" class="loading"><div class="spin"></div></div>
 
-<script src="app.js"></script>
+<script>
+  // Limpa cache e carrega JS sempre atualizado
+  (function() {
+    // Desregistrar Service Workers antigos
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistrations().then(regs => {
+        regs.forEach(r => r.unregister());
+      });
+    }
+    // Carregar JS com timestamp para forçar versão nova
+    var s = document.createElement('script');
+    s.src = 'app.js?v=' + Date.now();
+    document.head.appendChild(s);
+  })();
+</script>
 </body>
 </html>
